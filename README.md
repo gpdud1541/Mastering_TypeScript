@@ -72,7 +72,7 @@ npm i grunt-exec --save-dev
 npm i grunt-contrib-watch --save-dev
 ```
   
-  GruntFile.js 필요함. 타입스크립트가 아닌 자바스크립트 파일로 만들어야 함.
+GruntFile.js 필요함. 타입스크립트가 아닌 자바스크립트 파일로 만들어야 함.
 ``` javascript
 module.exports = function(grunt) {
     // npm 작업 로드
@@ -119,7 +119,7 @@ console.log('doCalculation(): ' + result);
 // doCalculation(): 61
 ```  
   
-  타입스크립트는 강타입 언어로, string 타입으로 선언한 변수에는 문자열만 들어갈 수 있음.  
+타입스크립트는 강타입 언어로, string 타입으로 선언한 변수에는 문자열만 들어갈 수 있음.  
 타입을 어기면 컴파일러는 자동으로 오류를 발생시키고, 어느 줄에서 오류가 발생했는지 알려준다.  
   
 * 타입 구문  
@@ -159,3 +159,31 @@ myString = myNumber.toString();
 myBoolean = (myString === "test");
 if (myBoolean) { myNumber = 1; }
 ```  
+* 타입 추론  
+변수가 처음 사용될 때 변수의 타입을 결정해 이후 코드에서 사용한다.
+``` typescript
+var inferredString = "this is a string";
+var inferredNumber = 1;
+inferredString = inferredNumber
+```
+콜론(: 타입) 구문으로 변수 타입을 지정하지 않으면  
+첫 번째 할당되는 타입을 기준으로 변수 타입을 추론한다.  
+
+* 덕 타이핑  
+오리처럼 생겼고, 오리처럼 꽥꽥댄다면 오리로 보는 것.
+``` typescript
+var complexType = { name: "myName", id: 1 };
+complexType = { id: 2, name: "anotherName" };
+```
+컴파일러는 덕 타이핑으로 다시 할당한 객체를 검사하여  
+같은 속성을 가진 객체라면 같은 타입으로 본다.  
+  
+덕 타이핑에 맞지 않는 변수를 할당했을 때
+``` typescript
+var complexType = { name: "myName", id: 1 };
+complexType = { id: 2 };
+```
+id는 있지만 name 속성이 없는 객체를 항당하면 컴파일 오류가 발생한다.  
+없는 속성을 넣어도 오류를 발생한다.  
+  
+* 템플릿 문자열

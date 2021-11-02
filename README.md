@@ -247,7 +247,27 @@ var item1 = <any>{ id: 1, name: "item 1" };
 item1 = { id: 2 };
 ```  
 변수 할당 구문의 왼쪽에 있는 :any 타입 지정자를 <any>로 바꿔 오른쪽으로 옮겼다.  
-컴파일러는 할당 연산자의 오른쪽에 있는 { id: 1, name: "item1 " } 객체를 any 타입으로 명시적 변환해 처리한다.  
+컴파일러는 할당 연산자의 오른쪽에 있는 { id: 1, name: "item1" } 객체를 any 타입으로 명시적 변환해 처리한다.  
 할당 연산자 왼쪽의 item1은 타입스크립트의 타입 추론으로 any 타입이 된다.  
   
-할당 연산자 오른쪽의 < > 구문을 사용하는 기술이 명시적 형 변환이다.
+할당 연산자 오른쪽의 < > 구문을 사용하는 기술이 명시적 형 변환이다.  
+<주의> any 타입을 너무 많이 사용하면 찾기 어려운 오류가 쉽게 발생, 객체에 맞는 타입을 찾아 사용하는 것이 좋음  
+  
+* 열거형  
+특수한 숫자 문제에 대한 해결책 제공  
+``` typescript
+enum DoorState {
+    Open,    // 0
+    Closed,  // 1
+    Ajar     // 2
+}
+
+var openDoor = DoorState.Open;
+console.log(`openDoor is : ${openDoor}`); // openDoor is : 0
+
+var closeDoor = DoorState["Closed"];
+console.log(`closeDoor is : ${closeDoor}`); // closeDoor is : 1
+
+var ajarDoor = DoorState[2];
+console.log(`ajarDoor is : ${ajarDoor}`); // ajarDoor is : Ajar
+```

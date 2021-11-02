@@ -166,9 +166,9 @@ if (myBoolean) { myNumber = 1; }
 var inferredString = "this is a string";
 var inferredNumber = 1;
 inferredString = inferredNumber
-```
-+ 콜론(: 타입) 구문으로 변수 타입을 지정하지 않으면  
-+ 첫 번째 할당되는 타입을 기준으로 변수 타입을 추론한다.  
+``` 
+    콜론(: 타입) 구문으로 변수 타입을 지정하지 않으면  
+    첫 번째 할당되는 타입을 기준으로 변수 타입을 추론한다.  
 
 * 덕 타이핑  
     + 오리처럼 생겼고, 오리처럼 꽥꽥댄다면 오리로 보는 것.

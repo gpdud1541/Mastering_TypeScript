@@ -72,7 +72,7 @@ npm i grunt-exec --save-dev
 npm i grunt-contrib-watch --save-dev
 ```
   
-GruntFile.js 필요함. 타입스크립트가 아닌 자바스크립트 파일로 만들어야 함.
+  GruntFile.js 필요함. 타입스크립트가 아닌 자바스크립트 파일로 만들어야 함.
 ``` javascript
 module.exports = function(grunt) {
     // npm 작업 로드
@@ -119,8 +119,11 @@ console.log('doCalculation(): ' + result);
 // doCalculation(): 61
 ```  
   
-타입스크립트는 강타입 언어로, string 타입으로 선언한 변수에는 문자열만 들어갈 수 있음.  
+  타입스크립트는 강타입 언어로, string 타입으로 선언한 변수에는 문자열만 들어갈 수 있음.  
 타입을 어기면 컴파일러는 자동으로 오류를 발생시키고, 어느 줄에서 오류가 발생했는지 알려준다.  
+  
+* 타입 구문  
+변수 이름 뒤에 콜론(:) 기호를 넣고 타입을 표시한다.
 ``` typeScript
 function doCalculation(
     a: number,
@@ -136,6 +139,23 @@ console.log('doCalculation(): ' + result);
 var result = doCalculation("3", "2", "1");
 console.log('doCalculation(): ' + result);
 ```  
-  
-* 타입 구문  
-변수 이름 뒤에 콜론(:) 기호를 넣고 타입을 표시한다.
+변수의 타입과 다른 타입의 값을 할당하려고 하면 타입스크립트 컴파일러는 컴파일 오류를 발생시킨다.  
+대입 연산자(=)의 왼쪽에 있는 변수 타입과 오른쪽의 변수 타입이 일치해야 한다.  
+  ``` typeScript
+var myString: string;
+var myNumber: number;
+var myBoolean: boolean;
+myString = "1";
+myNumber = 1;
+myBoolean = true;
+
+// error
+myString = myNumber;
+myBoolean = myString;
+myNumber = myBoolean;
+
+// 수정
+myString = myNumber.toString();
+myBoolean = (myString === "test");
+if (myBoolean) { myNumber = 1; }
+```  

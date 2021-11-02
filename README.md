@@ -1,7 +1,7 @@
 # Mastering_TypeScript
 
 ### 캡슐화
-* 객체지향 언어의 기본 원칙, 하나의 컴포넌트에서 데이터와 데이터를 사용하는 기능 집합 정의
+객체지향 언어의 기본 원칙, 하나의 컴포넌트에서 데이터와 데이터를 사용하는 기능 집합 정의
 ``` typescript
 class MyClass {
     add(x, y) {
@@ -140,7 +140,7 @@ console.log('doCalculation(): ' + result);
 ```  
     변수의 타입과 다른 타입의 값을 할당하려고 하면 타입스크립트 컴파일러는 컴파일 오류를 발생시킨다.  
     대입 연산자(=)의 왼쪽에 있는 변수 타입과 오른쪽의 변수 타입이 일치해야 한다.  
-  ``` typeScript
+``` typeScript
 var myString: string;
 var myNumber: number;
 var myBoolean: boolean;

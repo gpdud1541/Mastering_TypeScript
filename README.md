@@ -12,7 +12,9 @@ class MyClass {
 var classInstance = new MyClass();
 var result = classInstance.add(1, 2);
 console.log(`add(1, 2) returns ${result}`);
-
+//
+//                     ↓
+//
 var MyClass = (function() {
     // 클로저가 환경을 기억하는 자체 실행 함수
     function MyClass() {
@@ -42,9 +44,11 @@ class CountClass {
     }
 }
 var countInstance = new CountClass();
-countInstance._count = 17; // 오류 발생 : Property '_count' is private and only accessible within class 'CountClass'.
+countInstance._count = 17;
+// 오류 발생 : Property '_count' is private and only accessible within class 'CountClass'.
 ```
 타입스크립트는 클래스 정의를 자바스크립트 클로저로 변환한다.
+
 
 ------------
 ### 노드 기반 컴파일

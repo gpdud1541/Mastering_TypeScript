@@ -271,4 +271,33 @@ console.log(`closeDoor is : ${closeDoor}`); // closeDoor is : 1
 
 var ajarDoor = DoorState[2];
 console.log(`ajarDoor is : ${ajarDoor}`); // ajarDoor is : Ajar
-```
+
+// 수동으로 지정할 수 있음
+enum DoorState {
+    Open = 3,
+    Closed = 7,
+    Ajar = 10
+}
+```  
+
+* 상수 열거형 : const 키워드 사용
+``` typescript
+const enum DoorStateConst{
+    Open,
+    Closed,
+    Ajar
+}
+var constDoorOpen = DoorStateConst.Open;
+console.log(`constDoorOpen is : ${constDoorOpen}`);
+console.log(`${DoorStateConst[0]}`); // error
+console.log(`${DoorStateConst["Open"]}`);
+```  
+
+상수 열거형을 사용하면 열거형의 내부 문자열값을 참조할 수 없다.  
+하지만 상수 열거형에도 문자열 접근자를 사용할 수 있다.  
+  
+상수 열거형을 사용할 때는  
+컴파일러가 자바스크립트를 생성할 때 열거형 정의를 모두 제거하고  
+열거형 내부의 숫자값으로 바꿔 놓는다는 점을 기억해야 한다.  
+  
+* 상수값

@@ -181,9 +181,73 @@ complexType = { id: 2, name: "anotherName" };
 덕 타이핑에 맞지 않는 변수를 할당했을 때
 ``` typescript
 var complexType = { name: "myName", id: 1 };
-complexType = { id: 2 };
+complexType = { id: 2 }; // error
 ```
 id는 있지만 name 속성이 없는 객체를 항당하면 컴파일 오류가 발생한다.  
 없는 속성을 넣어도 오류를 발생한다.  
   
-* 템플릿 문자열
+* 템플릿 문자열  
+``` typescript
+var myVariable = "test";
+// ES6 템플릿 문자열
+console.log("myVariable = " + myVariable);
+console.log(`myVariable = ${myVariable}`); 
+```  
+
+* 배열  
+자바스크립트와 마찬가지로 간단하게 [] 구문으로 표시한다.
+``` typescript
+var arrayOfNumbers: number [] = [1, 2, 3]; // 숫자 배열
+arrayOfNumbers = [3, 4, 5, 6, 7, 8, 9]; // 원소 개수와 관계없이 할당할 수 있음
+console.log(`arrayOfNumbers: ${arrayOfNumbers}`);
+arrayOfNumbers = ["1", "2", "3"]; // error
+```  
+  
+* for ... in 과 for ... of  
+``` typescript
+// for
+var arrayOfStrings: string[] = ["first", "second", "third"];
+
+for (var i = 0; i < arrayOfStrings.length; i++) {
+    console.log(`arrayOfStrings[${i}] = ${arrayOfStrings[i]}`);
+}
+// arrayOfStrings[0] = first
+// arrayOfStrings[1] = second
+// arrayOfStrings[2] = third
+
+// for in
+for (var itemKey in arrayOfStrings) {
+    var itemValue = arrayOfStrings[itemKey];
+    console.log(`arrayOfStrings[${itemKey}] = ${itemValue}`);
+}
+// arrayOfStrings[0] = first
+// arrayOfStrings[1] = second
+// arrayOfStrings[2] = third
+
+// for of
+for (var arrayItem of arrayOfStrings) {
+    console.log(`arrayItem = ${arrayItem}`);
+}
+// arrayItem = first
+// arrayItem = second
+// arrayItem = third
+```  
+
+* any 타입  
+객체 타입을 any로 지정하면 컴파일러의 엄격한 타입 검사가 느슨해진다.  
+``` typescript
+var item1: any = {id: 1, name: "item 1" };
+item1 = { id: 2 }; // 오류 안 남!
+```  
+
+* 명시적 형 변환  
+<> 구문으로 객체를 다른 타입 객체로 형 변환할 수 있다.
+``` typescript
+var item1 = <any>{ id: 1, name: "item 1" };
+item1 = { id: 2 };
+```  
+변수 할당 구문의 왼쪽에 있는 :any 타입 지정자를 <any>로 바꿔 오른쪽으로 옮겼다.  
+컴파일러는 할당 연산자의 오른쪽에 있는 { id: 1, name: "item1 " } 객체를 any 타입으로  
+명시적 변환해 처리한다. 할당 연산자 왼쪽의 item1은 타입스크립트의 타입 추론으로 any 타입이 된다.  
+  
+할당 연산자 오른쪽의 < > 구문을 사용하는 기술이 명시적 형 변환이다.

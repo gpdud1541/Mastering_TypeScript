@@ -1,7 +1,7 @@
 # Mastering_TypeScript
 
 ### 캡슐화
-    객체지향 언어의 기본 원칙, 하나의 컴포넌트에서 데이터와 데이터를 사용하는 기능 집합 정의
+객체지향 언어의 기본 원칙, 하나의 컴포넌트에서 데이터와 데이터를 사용하는 기능 집합 정의
 ``` typescript
 class MyClass {
     add(x, y) {
@@ -46,7 +46,7 @@ var countInstance = new CountClass();
 countInstance._count = 17;
 // 오류 발생 : Property '_count' is private and only accessible within class 'CountClass'.
 ```
-    타입스크립트는 클래스 정의를 자바스크립트 클로저로 변환한다.
+타입스크립트는 클래스 정의를 자바스크립트 클로저로 변환한다.
 
 
 ------------
@@ -61,8 +61,8 @@ tsc --init // tsconfig.json 파일 생성
 
 ------------
 ### 그런트
-    자동 수행 도구, 타입스크립트 파일을 수정할 때 자동으로 tsc 컴파일러가 실행  
-    노드 환경에서 동작함, npm 설치해야 함
+자동 수행 도구, 타입스크립트 파일을 수정할 때 자동으로 tsc 컴파일러가 실행  
+노드 환경에서 동작함, npm 설치해야 함
 ```
 npm init
 npm i -g grunt-cli
@@ -71,7 +71,7 @@ npm i grunt-exec --save-dev
 npm i grunt-contrib-watch --save-dev
 ```
   
-    GruntFile.js 필요함. 타입스크립트가 아닌 자바스크립트 파일로 만들어야 함.
+GruntFile.js 필요함. 타입스크립트가 아닌 자바스크립트 파일로 만들어야 함.
 ``` javascript
 module.exports = function(grunt) {
     // npm 작업 로드
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
 * 코드를 제안하고 자바스크립트에 객체지향 기술을 도입       
 
 #### 1. 기본 타입  
-* 타이핑  
+<타이핑>  
 자바스크립트는 실행 중에 객체나 변수를 재할당할 수 있다.  
 (ex: 숫자를 넣어 계산하는 함수에 문자열을 넣을 경우)  
 ``` javascript
@@ -121,7 +121,7 @@ console.log('doCalculation(): ' + result);
 타입스크립트는 강타입 언어로, string 타입으로 선언한 변수에는 문자열만 들어갈 수 있음.
 타입을 어기면 컴파일러는 자동으로 오류를 발생시키고, 어느 줄에서 오류가 발생했는지 알려준다.  
   
-* 타입 구문  
+<타입 구문>  
     변수 이름 뒤에 콜론(:) 기호를 넣고 타입을 표시한다.
 ``` typeScript
 function doCalculation(
@@ -158,7 +158,7 @@ myString = myNumber.toString();
 myBoolean = (myString === "test");
 if (myBoolean) { myNumber = 1; }
 ```  
-* 타입 추론  
+<타입 추론>  
 변수가 처음 사용될 때 변수의 타입을 결정해 이후 코드에서 사용한다.
 콜론(: 타입) 구문으로 변수 타입을 지정하지 않으면  
 첫 번째 할당되는 타입을 기준으로 변수 타입을 추론한다.  
@@ -168,7 +168,7 @@ var inferredNumber = 1;
 inferredString = inferredNumber
 ```
 
-* 덕 타이핑  
+<덕 타이핑>  
 오리처럼 생겼고, 오리처럼 꽥꽥댄다면 오리로 보는 것.
 ``` typescript
 var complexType = { name: "myName", id: 1 };
@@ -184,7 +184,7 @@ complexType = { id: 2 }; // error
 id는 있지만 name 속성이 없는 객체를 항당하면 컴파일 오류가 발생한다.  
 없는 속성을 넣어도 오류를 발생한다.  
   
-* 템플릿 문자열  
+<템플릿 문자열>  
 ``` typescript
 var myVariable = "test";
 // ES6 템플릿 문자열
@@ -192,7 +192,7 @@ console.log("myVariable = " + myVariable);
 console.log(`myVariable = ${myVariable}`); 
 ```  
 
-* 배열  
+<배열>  
 자바스크립트와 마찬가지로 간단하게 [ ] 구문으로 표시한다.
 ``` typescript
 var arrayOfNumbers: number [] = [1, 2, 3]; // 숫자 배열
@@ -201,7 +201,7 @@ console.log(`arrayOfNumbers: ${arrayOfNumbers}`);
 arrayOfNumbers = ["1", "2", "3"]; // error
 ```  
   
-* for ... in 과 for ... of  
+<for ... in 과 for ... of>  
 ``` typescript
 // for
 var arrayOfStrings: string[] = ["first", "second", "third"];
@@ -231,14 +231,14 @@ for (var arrayItem of arrayOfStrings) {
 // arrayItem = third
 ```  
 
-* any 타입  
+<any 타입>  
 객체 타입을 any로 지정하면 컴파일러의 엄격한 타입 검사가 느슨해진다.  
 ``` typescript
 var item1: any = {id: 1, name: "item 1" };
 item1 = { id: 2 }; // 오류 안 남!
 ```  
 
-* 명시적 형 변환  
+<명시적 형 변환>  
 <> 구문으로 객체를 다른 타입 객체로 형 변환할 수 있다.
 ``` typescript
 var item1 = <any>{ id: 1, name: "item 1" };
@@ -250,10 +250,10 @@ item1 = { id: 2 };
    
 할당 연산자 오른쪽의 < > 구문을 사용하는 기술이 명시적 형 변환이다.  
    
-<주의>  
+=주의=  
 any 타입을 너무 많이 사용하면 찾기 어려운 오류가 쉽게 발생, 객체에 맞는 타입을 찾아 사용하는 것이 좋음  
   
-* 열거형  
+<열거형>  
 특수한 숫자 문제에 대한 해결책 제공  
 ``` typescript
 enum DoorState {
@@ -279,7 +279,7 @@ enum DoorState {
 }
 ```  
 
-* 상수 열거형 : const 키워드 사용
+<상수 열거형> : const 키워드 사용
 ``` typescript
 const enum DoorStateConst{
     Open,
@@ -297,4 +297,4 @@ console.log(`${DoorStateConst["Open"]}`);
 상수 열거형을 사용할 때는  
 컴파일러가 자바스크립트를 생성할 때 열거형 정의를 모두 제거하고 열거형 내부의 숫자값으로 바꿔 놓는다는 점을 기억해야 한다.  
   
-* 상수값
+<상수값>

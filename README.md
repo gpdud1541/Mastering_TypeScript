@@ -101,9 +101,41 @@ module.exports = function(grunt) {
 * 오류 확인하기 쉬움.
 * 코드를 제안하고 자바스크립트에 객체지향 기술을 도입       
 
-1. 기본 타입
-자바스크립트는 실행 중에 객체나 변수를 재할당할 수 있다.        
-(ex: 숫자를 넣어 계산하는 함수에 문자열을 넣을 경우)        
+1. 기본 타입  
+* 타이핑  
+자바스크립트는 실행 중에 객체나 변수를 재할당할 수 있다.  
+(ex: 숫자를 넣어 계산하는 함수에 문자열을 넣을 경우)  
+``` javascript
+function doCalculation(a, b, c) {
+    return (a * b) + c;
+}
+var result = doCalculation(2, 3, 1);
+console.log('doCalculation(): ' + result);
+// doCalculation(): 7
+```  
+``` javascript
+var result = doCalculation("2", "3", "1");
+console.log('doCalculation(): ' + result);
+// doCalculation(): 61
+```  
+  
+타입스크립트는 강타입 언어로, string 타입으로 선언한 변수에는 문자열만 들어갈 수 있음.  
+타입을 어기면 컴파일러는 자동으로 오류를 발생시키고, 어느 줄에서 오류가 발생했는지 알려준다.  
+``` typeScript
+function doCalculation(
+    a: number,
+    b: number,
+    c: number
+) {
+    return (a * b) + c;
+}
+var result = doCalculation(3, 2, 1);
+console.log('doCalculation(): ' + result);
 
-타입스크립트는 강타입 언어로, string 타입으로 선언한 변수에는 문자열만 들어갈 수 있음.          
-타입을 어기면 컴파일러는 자동으로 오류를 발생시키고, 어느 줄에서 오류가 발생했는지 알려준다.
+// error
+var result = doCalculation("3", "2", "1");
+console.log('doCalculation(): ' + result);
+```  
+  
+* 타입 구문  
+변수 이름 뒤에 콜론(:) 기호를 넣고 타입을 표시한다.

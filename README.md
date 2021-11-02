@@ -71,7 +71,7 @@ npm i grunt --save-dev // 프로젝트 디렉터리에 지역 버전의 그런�
 npm i grunt-exec --save-dev
 npm i grunt-contrib-watch --save-dev
 ```
-
+  
 GruntFile.js 필요함. 타입스크립트가 아닌 자바스크립트 파일로 만들어야 함.
 ``` javascript
 module.exports = function(grunt) {

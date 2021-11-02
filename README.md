@@ -58,3 +58,38 @@ tsc -v // 버전
 tsc hello.ts // 자바스크립트로 컴파일
 tsc --init // tsconfig.json 파일 생성
 ```
+
+
+------------
+### 그런트
+자동 수행 도구, 타입스크립트 파일을 수정할 때 자동으로 tsc 컴파일러가 실행
+노드 환경에서 동작함, npm 설치해야 함
+```
+npm init
+npm i -g grunt-cli
+npm i grunt --save-dev // 프로젝트 디렉터리에 지역 버전의 그런트 설치
+npm i grunt-exec --save-dev
+npm i grunt-contrib-watch --save-dev
+```
+
+GruntFile.js 필요함. 타입스크립트가 아닌 자바스크립트 파일로 만들어야 함.
+``` javascript
+module.exports = function(grunt) {
+    // npm 작업 로드
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-exec');
+    // 실행할 작업 설정(pkg 속성, watch 속성, exec 속성)
+    grunt.initConfig({
+        // npm init 으로 만든 package.json 파일 로드
+        pkg: grunt.file.readJSON('package.json'),
+        watch: {
+            files: ['**/*.ts'], // 감시할 파일 지정(모든 .ts 파일)
+            tasks: ['exec:run_tsc'] // 파일이 변경되면 실행할 작업 지정
+        },
+        exec: {
+            run_tsc: { cmd: 'tsc' }
+        }
+    });
+    grunt.registerTask('default', ['watch']); // 파일 변경을 감시할 기본 작업 지정
+};
+```

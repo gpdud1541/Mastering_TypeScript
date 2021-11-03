@@ -413,3 +413,23 @@ function testNormalAndRestArguments(
 ) {
 }
 ```
+  
+#### 함수 콜백
+자바스크립트의 강역한 기능 : 콜백  
+인자로 전달되는 함수로 보통 함수 안에서 실행됨. 함수에 값을 전달하는 것처럼 함수에 함수를 전달할 수 있다.  
++ javascript
+``` javascipt
+var callbackFunction = function(text) {
+    console.log('inside callbackFunction ' + text);
+}
+function doSomethingWithCallback(initialText, callback) {
+    console.log('inside doSomethingWithCallback ' + initialText);
+    callback(initialText);
+}
+
+doSomethingWithCallback('myText', callbackFunction);
+```
++ 결과
+    inside doSomethingWithCallback myText
+    inside callbackFunction myText
+인자로 들어온 callback 변수가 실제로는 함수라고 가정하고 initialText를 인자로 호출한다.

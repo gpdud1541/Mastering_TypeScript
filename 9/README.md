@@ -47,3 +47,23 @@ testUndef(null);    // test parameter : null
 ```
 1. 첫 번째 방법 : 아무런 값도 주지 않고 호출, 인자를 모르거나 어떤 인자가 필요한지 고려하지 않고 호출
 2. 두 번째 방법 : null을 인자로 전달해 호출, 함수에 인자가 필요하다는 것을 알고 있지만, 값 없이 호출
+  
++ typescript
+``` typescript
+function testUndef(test: null | number) {
+    console.log('test parameter : ' + test);
+}
+
+testUndef(); // error
+```
+타입스크립트 컴파일러는 testUndef 함수를 숫자나 null 값으로만 호출하도록 함(인자 없이 호출 허용 X)  
+  
++ 허용하도록 선언하는 예제
+``` typescript
+let x: number | undefined;
+
+x = 1;
+x = undefined;
+x = null; // error
+```
+숫자와 undefined만 사용할 수 있고, null 값은 사용 X

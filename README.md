@@ -297,7 +297,7 @@ console.log(`${DoorStateConst["Open"]}`);
 컴파일러가 자바스크립트를 생성할 때 열거형 정의를 모두 제거하고 열거형 내부의 숫자값으로 바꿔 놓는다는 점을 기억해야 한다.  
   
 #### 상수값
-const 키워드로 상수를 정의할 수 있음.  
+**const 키워드**로 상수를 정의할 수 있음.  
 상수로 지정된 변수는 선언할 때만 값을 할당할 수 있고, 그 뒤로는 바꿀 수 없다.
 ``` typescript
 const constValue = "test";
@@ -311,7 +311,7 @@ console.log(`anyValue = ${anyValue}`); // anyValue = undefined
 var anyValue = 2;
 console.log(`anyValue = ${anyValue}`); // anyValue = 2
 ```
-타입스크립트는 let 키워드를 도입, 정의하지 않은 변수 이름은 사용하지 못한다.
+타입스크립트는 **let 키워드**를 도입, 정의하지 않은 변수 이름은 사용하지 못한다.
 ``` typescript
 console.log(`letValue = ${lValue}`); // error
 let lValue = 2;
@@ -352,7 +352,7 @@ console.log(`addFunctionResult : ${addFunctionResult}`); // addFunctionResult : 
 ```
   
 #### 선택적 인자
-표기하는 방법: ?(물음표)  
+표기하는 방법: **?(물음표)**  
 ``` typescript
 function concatStrings(a: string, b: string, c?: string) {
     return a + b + c;
@@ -386,7 +386,7 @@ testArguments("firstArg");
 // arguments[0] = firstArg
 ```
 타입스크립트에서 같은 함수 선언을 사용하려면 나머지 인자 문법을 사용해야 한다.  
-나머지 인자는 함수 선언에서 가변 개수 인자를 3개의 점(...)으로 표시한다.
+나머지 인자는 함수 선언에서 가변 개수 인자를 **3개의 점(...)**으로 표시한다.
 ``` typescript
 function testArguments(... argArray: number []) {
     if (argArray.length > 0) {
@@ -401,7 +401,8 @@ function testArguments(... argArray: number []) {
 testArguments(9);
 testArguments(1, 2, 3);
 ```
-※ argArray와 arguments의 다른 점은 추론된 타입이다. argArray는 명시적으로 숫자로 선언했기 때문에 숫자 배열로 취급한다.  
+※ argArray와 arguments의 다른 점은 **추론된 타입**이다.  
+argArray는 명시적으로 숫자로 선언했기 때문에 숫자 배열로 취급한다.  
 하지만 arguments는 추론된 타입이 없으므로 any 타입이다.  
   
 나머지 인자는 함수 인자 목록의 마지막에 넣으면 일반적인 함수 인자와 함께 사용할 수 있다.
@@ -415,7 +416,7 @@ function testNormalAndRestArguments(
 ```
   
 #### 함수 콜백
-자바스크립트의 강역한 기능 : 콜백  
+자바스크립트의 강력한 기능 : **콜백**  
 인자로 전달되는 함수로 보통 함수 안에서 실행됨. 함수에 값을 전달하는 것처럼 함수에 함수를 전달할 수 있다.  
 + javascript
 ``` javascipt
@@ -459,13 +460,13 @@ anotherText is not a function!!
 2. 콜백 인자를 이해하고 문서화해야 한다.
 
 #### 함수 시그니처
-일반 변수에 강타입을 추가하는 "편의 문법"은 콜백 함수에도 사용할 수 있다.  
+일반 변수에 강타입을 추가하는 **"편의 문법"**은 콜백 함수에도 사용할 수 있다.  
 () => 형태의 굵은 화살표 문법을 도입, 함수에 대한 인자는 함수여야 한다.
 ``` typescript
 callback : (initialText: string) => void
 ```
-콜론(: 타입) 문법으로 타입을 갖고 굵은 화살표 구문 () => 으로 인자의 타입이 함수임을 표시한다.  
-void는 함수의 반환값이 없음을 나타내는 키워드  
+**콜론(: 타입)** 문법으로 타입을 갖고 굵은 화살표 구문 **() =>** 으로 인자의 타입이 함수임을 표시한다.  
+**void**는 함수의 반환값이 없음을 나타내는 키워드  
 ※ 함수 시그니처에서 인자의 이름은 달라도 된다. 인자의 수, 타입, 반환값의 타입만 같으면 됨  
   
 이것은 타입스크립트의 강력한 기능!  

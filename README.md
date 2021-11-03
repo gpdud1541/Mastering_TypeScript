@@ -296,3 +296,25 @@ console.log(`${DoorStateConst["Open"]}`);
 컴파일러가 자바스크립트를 생성할 때 열거형 정의를 모두 제거하고 열거형 내부의 숫자값으로 바꿔 놓는다는 점을 기억해야 한다.  
   
 #### 상수값
+const 키워드로 상수를 정의할 수 있음.  
+상수로 지정된 변수는 선언할 때만 값을 할당할 수 있고, 그 뒤로는 바꿀 수 없다.
+``` typescript
+const constValue = "test";
+constValue = "updated"; // error
+```
+  
+#### let 키워드
+자바스크립트 변수 -> var 키워드, 이전에 정의하지 않았거나 값을 할당하지 않은 변수 = undefined로 취급  
+``` javascript
+console.log(`anyValue = ${anyValue}`); // anyValue = undefined
+var anyValue = 2;
+console.log(`anyValue = ${anyValue}`); // anyValue = 2
+```
+타입스크립트는 let 키워드를 도입, 정의하지 않은 변수 이름은 사용하지 못한다.
+``` typescript
+console.log(`letValue = ${lValue}`); // error
+let lValue = 2;
+```
+  
+let으로 정의한 변수는 블록 범위에 속한다는 점. 정의된 블록과 값이 존재하는 범위 안에서만 유효함  
+변수를 선언하고 유효 범위를 제한하는 더 안전한 방법을 제공해준다.

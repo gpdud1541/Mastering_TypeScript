@@ -36,3 +36,6 @@ usingCallbackWithString 함수는 타입 별명(함수 시그니처)을 callback
 자주 사용하는 공용체 타입에 쉽고 직관적인 이름을 사용하는 방법을 제공함
   
 ### Null과 undefined
+> test
+ddd
+> ### test

@@ -1,3 +1,4 @@
+// 타입 별명
 type StringOrNumber = string | number;
 
 function addWithAlias(

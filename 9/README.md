@@ -36,6 +36,14 @@ usingCallbackWithString 함수는 타입 별명(함수 시그니처)을 callback
 자주 사용하는 공용체 타입에 쉽고 직관적인 이름을 사용하는 방법을 제공함
   
 ### Null과 undefined
-> test
-ddd
-> ### test
++ javascript
+``` javascript
+function testUndef(test) {
+    console.log('test parameter : ' + test);
+}
+
+testUndef();        // test parameter : undefined
+testUndef(null);    // test parameter : null
+```
+1. 첫 번째 방법 : 아무런 값도 주지 않고 호출, 인자를 모르거나 어떤 인자가 필요한지 고려하지 않고 호출
+2. 두 번째 방법 : null을 인자로 전달해 호출, 함수에 인자가 필요하다는 것을 알고 있지만, 값 없이 호출

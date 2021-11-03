@@ -428,6 +428,7 @@ function doSomethingWithCallback(initialText, callback) {
 }
 
 doSomethingWithCallback('myText', callbackFunction);
+doSomethingWithCallback('myText', 'anotherText'); // error: callback is not a function
 ```
 + 결과
 ```
@@ -435,3 +436,24 @@ inside doSomethingWithCallback myText
 inside callbackFunction myText
 ```
 인자로 들어온 callback 변수가 실제로는 함수라고 가정하고 initialText를 인자로 호출한다.
+
+인자로 들어온 callback이 진짜로 함수인지 확인한 후에 실행한다.
+``` javascript
+function doSomethingWithACallback(initialText, callback) {
+    console.log('inside doSomethingWithCallback ' + initialText);
+    if (typeof callback === "function") {
+        callback(initialText);
+    } else {
+        console.log(callback + ' is not a function!!');
+    }
+}
+doSomethingWithACallback('myText', 'anotherText');
+```
++ 결과
+```
+inside doSomethingWithACallback myText
+anotherText is not a function!!
+```
+※ 콜백 사용 시 주의사항
+1. 콜백이 잘못 들어오는 경우에 대비해야 한다.
+2. 콜백 인자를 이해하고 문서화해야 한다.

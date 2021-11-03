@@ -433,4 +433,5 @@ doSomethingWithCallback('myText', callbackFunction);
 
     inside doSomethingWithCallback myText
     inside callbackFunction myText
+
 인자로 들어온 callback 변수가 실제로는 함수라고 가정하고 initialText를 인자로 호출한다.

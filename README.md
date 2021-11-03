@@ -358,5 +358,58 @@ function concatStrings(a: string, b: string, c?: string) {
     return a + b + c;
 }
 ```
-선택적 인자는 함수 정의에서 인자의 마지막에만 사용 가능.  
-비선택적 인자가 선택적 인자 앞에만 있다면 선택적 인자는 몇 개든 사용할 수 있음.
+※ 선택적 인자는 함수 정의에서 인자의 마지막에만 사용 가능.  
+비선택적 인자가 선택적 인자 앞에만 있다면 선택적 인자는 몇 개든 사용할 수 있음.  
+  
+#### 기본 인자
+선택적 인자 구문의 약간의 변형을 통해 변수의 기본값 설정할 수 있음  
+c: string = "c". 기본값을 사용해 c에 해당하는 인자에 값이 없으면 기본값 "c"를 사용  
+※ 기본 인자를 사용하면 기본값을 갖는 선택적 인자가 자동으로 만들어 지는 점을 유의.  
+
+#### 나머지 인자
+자바스크립트에서는 arguments 라는 특수 변수로 함수에 들어온 모든 인자에 접근할 수 있다.
+``` javascript
+function testArgumnets() {
+    if (arguments.length > 0) {
+        for (var i = 0; arguments.legnth; i++) {
+            console.log("argument[" + i + "] = " + arguments[i]);
+        }
+    }
+}
+testArguments(1, 2, 3);
+testArguments("firstArg");
+
+// result
+// arguments[0] = 1
+// arguments[1] = 2
+// arguments[2] = 3
+// arguments[0] = firstArg
+```
+타입스크립트에서 같은 함수 선언을 사용하려면 나머지 인자 문법을 사용해야 한다.  
+나머지 인자는 함수 선언에서 가변 개수 인자를 3개의 점(...)으로 표시한다.
+``` typescript
+function testArguments(... argArray: number []) {
+    if (argArray.length > 0) {
+        for (var i = 0; i < argArray.length; i++) {
+            console.log(`argArray[${i}] = ${argArray[i]}`);
+            // 자바스크립트의 arguments 변수를 사용
+            console.log(`arguments[${i}] = ${arguments[i]}`);
+        }
+    }
+}
+
+testArguments(9);
+testArguments(1, 2, 3);
+```
+※ argArray와 arguments의 다른 점은 추론된 타입이다. argArray는 명시적으로 숫자로 선언했기 때문에 숫자 배열로 취급한다.  
+하지만 arguments는 추론된 타입이 없으므로 any 타입이다.  
+  
+나머지 인자는 함수 인자 목록의 마지막에 넣으면 일반적인 함수 인자와 함께 사용할 수 있다.
+``` typescript
+function testNormalAndRestArguments(
+    arg1: string,
+    arg2: number,
+    ...argArray: number[]
+) {
+}
+```

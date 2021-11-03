@@ -63,7 +63,7 @@ testArguments("firstArg");
 // arguments[0] = firstArg
 ```
 타입스크립트에서 같은 함수 선언을 사용하려면 나머지 인자 문법을 사용해야 한다.  
-나머지 인자는 함수 선언에서 가변 개수 인자를 **3개의 점(...)**으로 표시한다.
+나머지 인자는 함수 선언에서 가변 개수 인자를 **3개의 점(...)** 으로 표시한다.
 ``` typescript
 function testArguments(... argArray: number []) {
     if (argArray.length > 0) {
@@ -137,7 +137,7 @@ anotherText is not a function!!
 2. 콜백 인자를 이해하고 문서화해야 한다.
 
 ### 함수 시그니처
-일반 변수에 강타입을 추가하는 **"편의 문법"**은 콜백 함수에도 사용할 수 있다.  
+일반 변수에 강타입을 추가하는 **"편의 문법"** 은 콜백 함수에도 사용할 수 있다.  
 () => 형태의 굵은 화살표 문법을 도입, 함수에 대한 인자는 함수여야 한다.
 ``` typescript
 callback : (initialText: string) => void

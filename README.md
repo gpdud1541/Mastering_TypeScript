@@ -101,7 +101,7 @@ module.exports = function(grunt) {
 * 코드를 제안하고 자바스크립트에 객체지향 기술을 도입       
 
 ------------
-### > 기본 타입  
+### 1. 기본 타입  
 #### 타이핑
 자바스크립트는 실행 중에 객체나 변수를 재할당할 수 있다.  
 (ex: 숫자를 넣어 계산하는 함수에 문자열을 넣을 경우)  
@@ -321,4 +321,42 @@ let으로 정의한 변수는 블록 범위에 속한다는 점. 정의된 블�
 변수를 선언하고 유효 범위를 제한하는 더 안전한 방법을 제공해준다.  
   
 ------------
-### > 함수
+### 2. 함수
+#### 함수 반환 타입
+"편의 문법"으로 함수가 반환하는 변수의 타입을 정의할 수 있음.  
+``` typescript
+function addNumbers(a: number, b: number) :string { // 반환 타입 문자열
+    // return a + b; // error
+    return (a + b).toString();
+}
+var addResult = addNumbers(2, 3);
+console.log(`addNumbers returned : ${addResult}`);
+```
+  
+#### 익명 함수
++ javascript
+``` javascript
+var addVar = function(a, b) {
+    return a + b;
+}
+var addVarResult = addVar(2, 3);
+console.log("addVarResult : " + addVarResult); // addVarResult: 5
+```
++ typescript
+``` typescript
+var addFunction = function(a: number, b: number): number {
+    return a + b;
+}
+var addFunctionResult = addFunction(2, 3);
+console.log(`addFunctionResult : ${addFunctionResult}`); // addFunctionResult : 5
+```
+  
+#### 선택적 인자
+표기하는 방법: ?(물음표)  
+``` typescript
+function concatStrings(a: string, b: string, c?: string) {
+    return a + b + c;
+}
+```
+선택적 인자는 함수 정의에서 인자의 마지막에만 사용 가능.  
+비선택적 인자가 선택적 인자 앞에만 있다면 선택적 인자는 몇 개든 사용할 수 있음.

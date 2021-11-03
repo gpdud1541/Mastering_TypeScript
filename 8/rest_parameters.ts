@@ -1,3 +1,4 @@
+// 나머지 인자
 function testArguments(... argArray: number []) {
     if (argArray.length > 0) {
         for (var i = 0; i < argArray.length; i++) {

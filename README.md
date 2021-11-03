@@ -419,7 +419,7 @@ function testNormalAndRestArguments(
 자바스크립트의 강력한 기능 : **콜백**  
 인자로 전달되는 함수로 보통 함수 안에서 실행됨. 함수에 값을 전달하는 것처럼 함수에 함수를 전달할 수 있다.  
 + javascript
-``` javascipt
+``` javascript
 var callbackFunction = function(text) {
     console.log('inside callbackFunction ' + text);
 }
@@ -492,3 +492,6 @@ add 함수는 문자열과 숫자만 사용할 수 있음
 ``` javascript
 console.log(`add(true, false) = ${add(true, false)}`); // error
 ```
+  
+------------
+### 3. 고급 타입

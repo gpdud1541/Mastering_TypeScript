@@ -1,4 +1,5 @@
 "use strict";
+// 나머지 인자
 function testArguments() {
     var argArray = [];
     for (var _i = 0; _i < arguments.length; _i++) {
